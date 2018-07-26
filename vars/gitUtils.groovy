@@ -11,7 +11,7 @@ String getCommitId(boolean shortId = false, String args = 'HEAD') {
  * Retrieve current branch name.
  * @return branch name.
  */
-String getBranchName() {
+String getBranchName(scmvars) {
     //return env.BRANCH_NAME ?: sh(returnStdout: true, script: 'git rev-parse --abbrev-ref HEAD').trim()
     return scmvars.GIT_BRANCH ?: sh(returnStdout: true, script: 'git rev-parse --abbrev-ref HEAD').trim()
 }
