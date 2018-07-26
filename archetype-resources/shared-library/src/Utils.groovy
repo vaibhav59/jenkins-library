@@ -1,4 +1,4 @@
-package $package
+package io.jenkins.pipeline
 
 class Utils implements Serializable {
 
