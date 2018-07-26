@@ -15,3 +15,7 @@ String getBranchName(scmvars) {
     //return env.BRANCH_NAME ?: sh(returnStdout: true, script: 'git rev-parse --abbrev-ref HEAD').trim()
     return scmvars.GIT_BRANCH ?: sh(returnStdout: true, script: 'git rev-parse --abbrev-ref HEAD').trim()
 }
+
+String getGitBranchName() {
+    return scm.branches[0].name
+}
