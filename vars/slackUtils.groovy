@@ -5,7 +5,8 @@ def call(Map args) {
 //slackSend baseUrl: 'https://mypersonalspace-555.slack.com/services/hooks/jenkins-ci/', channel: '#deploy-notification', color: 'good', message: 'Successfully Deployed', teamDomain: 'mypersonalspace-555', tokenCredentialId: 'slackToken'
 
 // build status of null means successful
-buildStatus = "${args.buildStatus}" ?: 'SUCCESS'
+String buildStatus = "${args.buildStatus}"
+buildStatus = buildStatus ?: 'SUCCESS'
 
   // Default values
   def colorName = 'RED'
@@ -29,8 +30,8 @@ buildStatus = "${args.buildStatus}" ?: 'SUCCESS'
 
 try{
 
-def dryRun = ("${args.dryRun}")
-if (true) {
+def dryRun = "${args.dryRun}"
+if (!dryRun) {
    
   slackSend (baseUrl: "https://${args.team}.slack.com/services/hooks/jenkins-ci/" , color: colorCode , message: "SUCCESS: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})", channel: "${args.channel}", teamDomain: "'${args.team}'", tokenCredentialId:  "${args.credentials}")
   slackSend (baseUrl: "https://${args.team}.slack.com/services/hooks/jenkins-ci/" , color: colorCode , message: summary, channel: "${args.channel}", teamDomain: "'${args.team}'", tokenCredentialId:  'slackToken')
