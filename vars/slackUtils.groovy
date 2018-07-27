@@ -6,7 +6,7 @@ def call(Map args) {
 
 // build status of null means successful
 String buildStatus = "${args.buildStatus}"
-buildStatus = buildStatus ?: 'SUCCESS'
+buildStatus = (buildStatus != 'null') ?: 'SUCCESS'
 
   // Default values
   def colorName = 'RED'
