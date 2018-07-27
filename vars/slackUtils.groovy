@@ -2,8 +2,8 @@
 // vars/slackUtils.groovy
 
 def call(Map args) {
-echo ${args.buildStatus}
-echo ${args.channel}
+echo ${args.get("buildStatus")}
+echo args.get("buildStatus")
 slackSend baseUrl: 'https://mypersonalspace-555.slack.com/services/hooks/jenkins-ci/', channel: '#deploy-notification', color: 'good', message: 'Successfully Deployed', teamDomain: 'mypersonalspace-555', tokenCredentialId: 'slackToken'
 
 // build status of null means successful
