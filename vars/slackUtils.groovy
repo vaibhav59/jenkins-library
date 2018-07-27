@@ -4,7 +4,7 @@ def call(final Map args) {
 
 
 // build status of null means successful
-buildStatus = buildStatus ?: 'SUCCESS'
+buildStatus = args.buildStatus ?: 'SUCCESS'
 
   // Default values
   def colorName = 'RED'
