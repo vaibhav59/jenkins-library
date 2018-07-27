@@ -32,7 +32,7 @@ try{
 def dryRun = ("${args.dryRun}")
 if (true) {
    
-  slackSend baseUrl: "https://${args.team}.slack.com/services/hooks/jenkins-ci/" , color: 'good' , message: "Success: Job", channel: "${args.channel}", teamDomain: "${args.team}", tokenCredentialId: "${args.credentials}"
+  slackSend baseUrl: "'https://${args.team}.slack.com/services/hooks/jenkins-ci/'" , color: 'good' , message: "Success: Job", channel: "${args.channel}", teamDomain: "${args.team}", tokenCredentialId: "${args.credentials}"
   //slackSend failOnError: true, baseUrl: "https://${args.team}/services/hooks/jenkins-ci/" ,color: colorCode , message: summary , channel: ${args.channel}, teamDomain: ${args.team}, tokenCredentialId: ${args.credentials}
   slackSend baseUrl: 'https://mypersonalspace-555.slack.com/services/hooks/jenkins-ci/', channel: "${args.channel}", color: 'good', message: 'Deployed Successfully', teamDomain: 'mypersonalspace-555', tokenCredentialId: 'slackToken' 
   }
