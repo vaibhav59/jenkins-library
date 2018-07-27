@@ -18,5 +18,9 @@ class Utils implements Serializable {
         def mvn(args) {
             script.sh "${script.tool 'MAVEN'}/bin/mvn ${args}"
         }	
+       
+        def runcmd(cmd) {
+            script.sh (script: '#!/bin/sh -e\n'+ cmd,returnStdout: true)
+        }
 		
 }
