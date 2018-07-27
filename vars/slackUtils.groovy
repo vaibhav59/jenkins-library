@@ -32,8 +32,8 @@ try{
 def dryRun = ("${args.dryRun}")
 if (true) {
    
-  slackSend (baseUrl: "https://${args.team}.slack.com/services/hooks/jenkins-ci/" , color: colorCode , message: "SUCCESS: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})", channel: "${args.channel}", teamDomain: "'${args.team}'", tokenCredentialId:  "'${args.credentials}'")
-  slackSend (baseUrl: "https://${args.team}.slack.com/services/hooks/jenkins-ci/" , color: colorCode , message: details, channel: "${args.channel}", teamDomain: "'${args.team}'", tokenCredentialId:  'slackToken')
+  slackSend (baseUrl: "https://${args.team}.slack.com/services/hooks/jenkins-ci/" , color: colorCode , message: "SUCCESS: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})", channel: "${args.channel}", teamDomain: "'${args.team}'", tokenCredentialId:  "${args.credentials}")
+  slackSend (baseUrl: "https://${args.team}.slack.com/services/hooks/jenkins-ci/" , color: colorCode , message: summary, channel: "${args.channel}", teamDomain: "'${args.team}'", tokenCredentialId:  'slackToken')
   //slackSend failOnError: true, baseUrl: "https://${args.team}/services/hooks/jenkins-ci/" ,color: colorCode , message: summary , channel: ${args.channel}, teamDomain: ${args.team}, tokenCredentialId: ${args.credentials}
   slackSend baseUrl: 'https://mypersonalspace-555.slack.com/services/hooks/jenkins-ci/', channel: "${args.channel}", color: 'good', message: 'Deployed Successfully', teamDomain: 'mypersonalspace-555', tokenCredentialId: 'slackToken' 
   }
