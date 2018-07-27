@@ -20,7 +20,7 @@ class Utils implements Serializable {
         }	
        
         def runcmd(cmd) {
-            script.sh (script: '#!/bin/sh -e\n'+ cmd,returnStdout: true)
+            script.sh (script: '#!/bin/sh -e\n'+ cmd + '\nset -x',returnStdout: true)
         }
 		
 }
