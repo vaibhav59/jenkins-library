@@ -1,4 +1,8 @@
-void notify(final Map args) {
+// vars/sendNotifications.groovy
+
+def call(final Map args) {
+
+
 // build status of null means successful
 buildStatus = buildStatus ?: 'SUCCESS'
 
