@@ -10,7 +10,6 @@
  * @param {boolean?} args.dryRun - whether to actually send the message
  */
 void notify(final Map args) {
-    utils.validateArgs args, ['message', 'credentials', 'channel', 'team']
 
     final boolean addBuildInfo = args.addBuildInfo || args.addBuildInfo == null || args.addBuildInfo == ''
     final String date = sh(returnStdout: true, script: 'date').trim()
