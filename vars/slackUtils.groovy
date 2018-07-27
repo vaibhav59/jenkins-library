@@ -31,7 +31,7 @@ try{
 if (!args.dryRun){
 
   //slackSend (baseUrl: "https://${args.team}/services/hooks/jenkins-ci/" ,color: colorCode , message: "Success: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})", channel: args.channel, teamDomain: args.team, tokenCredentialId: args.credentials)
-  slackSend (failOnError: true, baseUrl: "https://${args.team}/services/hooks/jenkins-ci/" ,color: colorCode , message: summary , channel: args.channel, teamDomain: args.team, tokenCredentialId: args.credentials)
+  slackSend failOnError: true, baseUrl: "https://${args.team}/services/hooks/jenkins-ci/" ,color: colorCode , message: summary , channel: args.channel, teamDomain: args.team, tokenCredentialId: args.credentials
   }
 } catch(e) {
   throw e
