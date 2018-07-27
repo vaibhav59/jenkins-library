@@ -30,7 +30,7 @@ buildStatus = buildStatus ?: 'SUCCESS'
 
 try{
 
-def dryRun = "${args.dryRun}"
+def dryRun = args.dryRun
 if (!dryRun) {
    
   slackSend (baseUrl: "https://${args.team}.slack.com/services/hooks/jenkins-ci/" , color: colorCode , message: "SUCCESS: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})", channel: "${args.channel}", teamDomain: "'${args.team}'", tokenCredentialId:  "${args.credentials}")
