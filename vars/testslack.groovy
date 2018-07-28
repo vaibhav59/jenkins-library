@@ -60,7 +60,7 @@ void notify(final Map args) {
                             "link_names": "1"
                         }"""
                 )
-              println("Status: "+response.status)
+             // println("Status: "+response.status)
             } catch (IllegalStateException ex) {
                 echo "Failed to publish message on Slack channel ${args.channel}. Caused by: ${ex.message}"
             }
