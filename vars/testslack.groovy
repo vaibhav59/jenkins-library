@@ -12,7 +12,7 @@
 void notify(final Map args) {
 
     final boolean addBuildInfo = args.addBuildInfo || args.addBuildInfo == null || args.addBuildInfo == ''
-    final String date = sh(returnStdout: true, script: 'date').trim()
+    final String date = sh(returnStdout: true, script: "#!/bin/bash -e\n date \nset -x").trim()
     final String message = addBuildInfo ?
             "[${date} :: ${env.JOB_NAME} :: <${env.BUILD_URL}|${env.BUILD_NUMBER}>] ${args.message} (<${env.BUILD_URL}|Open>)" :
             args.message
@@ -43,6 +43,7 @@ void notify(final Map args) {
                         httpMode: 'POST',
                         url: "https://${args.team}.slack.com/services/hooks/jenkins-ci?token=${env.token}",
                         responseHandle: 'NONE',
+                        quiet: true,
                         requestBody: """{
                             "channel": "${args.channel}",
                             "attachments": [
@@ -60,7 +61,7 @@ void notify(final Map args) {
                             "link_names": "1"
                         }"""
                 )
-             // println("Status: "+response.status)
+               println("Notification Status: " + response.status)
             } catch (IllegalStateException ex) {
                 echo "Failed to publish message on Slack channel ${args.channel}. Caused by: ${ex.message}"
             }
