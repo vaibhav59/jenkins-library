@@ -61,13 +61,17 @@ void notify(final Map args) {
                             "link_names": "1"
                         }"""
                 )
-               println("Notification Status: " + response.status)
+               if (response.status == 200){
+                  println("Notification Status: SUCCESS")
+               } else {
+                  println("Notification Status: FAILED");
+               }
             } catch (IllegalStateException ex) {
                 echo "Failed to publish message on Slack channel ${args.channel}. Caused by: ${ex.message}"
             }
         }
 
-        echo "[${date} :: ${color}] ${args.message}"
+        //echo "[${date} :: ${color}] ${args.message}"
     }
 }
 
