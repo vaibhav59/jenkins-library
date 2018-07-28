@@ -1,6 +1,6 @@
 //vars/utils.groovy
 
-void addUser() {
+def addUser() {
 
         def USER = wrap([$class: 'BuildUser']) {
             return env.BUILD_USER
