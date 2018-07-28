@@ -39,7 +39,7 @@ void notify(final Map args) {
 
         if (!dryRun) {
             try {
-                httpRequest(
+               def response = httpRequest(
                         httpMode: 'POST',
                         url: "https://${args.team}.slack.com/services/hooks/jenkins-ci?token=${env.token}",
                         responseHandle: 'NONE',
@@ -60,6 +60,7 @@ void notify(final Map args) {
                             "link_names": "1"
                         }"""
                 )
+              println("Status: "+response.status)
             } catch (IllegalStateException ex) {
                 echo "Failed to publish message on Slack channel ${args.channel}. Caused by: ${ex.message}"
             }
