@@ -25,7 +25,7 @@ def call(String deployOnEnv) {
             break; 
          default: 
             println("Unknown Environment...Skipping execuiton."); 
-            exit 1;
+            error('Aborting the build.')
             break; 
       }
 
